@@ -56,7 +56,7 @@ the cloud. Suddenrun creates a playlist "Running workout" in your Spotify accoun
 Specific tracks could be added or removed and this information would be preserved and used during the update or creation
 of a new playlist.
 
-[![suddenrun_demo](https://img.youtube.com/vi/SHc67ap1Zy8/0.jpg)](https://www.youtube.com/watch?v=SHc67ap1Zy8-Y "Suddenrun demo")
+[![suddenrun_demo](https://img.youtube.com/vi/e8jQKUZj4rw/3.jpg)](https://youtu.be/e8jQKUZj4rw "Suddenrun demo")
 
 # Built With
 
