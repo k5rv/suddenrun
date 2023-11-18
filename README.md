@@ -44,8 +44,24 @@
 
 # About The Project
 
-Suddenrun uses Spotify Web API in order to create a playlist for your running workouts. It looks up for recommendations
-based on favorite tracks with an appropriate tempo for running.
+Suddenrun is a full-stack application that uses music track analysis and Spotify Web API to suggest personalized running 
+playlists. Suddenun retrieves Spotify recommendations for a specific listener and analyzes track tempo, energy, valence, 
+and danceability in order to provide a playlist that enhances the running workout experience. In order to approach this 
+task, I reviewed relevant research on context-based music features and emotion-based music recommendations.
+Authorization is built upon the OAuth 2.0 standard and implements the Authorization Code with PKCE Flow, achieved 
+through the integration of Spring MVC and Spring Security frameworks. User data regarding registration status and 
+created playlists are stored in PostgreSQL and persisted using JPA (Hibernate). Disliked tracks and custom additions 
+will be considered during the update of the playlist. Disliked tracks will not be added at all, and manually added will 
+be placed at the top of the playlist. Interactions with Spotify Web API are established by client implementation that 
+uses Spring Cloud OpenFeign. The application supports a development mode (configured and can be started with Docker or 
+Minikube) and can be deployed to AWS infrastructure using Kubernetes configurations. Cloud configuration is managed by 
+AWS CLI and consists of VPC, RDS and EKS. The application is registered in the ROUTE 53 public domain and uses AWS 
+Certificates to ensure a secure connection. Traffic goes from the domain to the Application Load Balancer in the VPC's 
+public network and is then routed to private networks where other resources are located. Cloud infrastructure deployment
+automated using Bash scripts. The front-end is implemented in JavaScript with Bootstrap and interacts with the back-end 
+REST API to manage user registration and playlists. Suddenrun unit test coverage is organized with JUnit, Mockito, and 
+DataJpaTest. Additionally, integration tests utilize MockMVC. The test profile is isolated and can be run without 
+external dependencies, such as a database (uses H2 in-memory), Spotify Web API, and implicit authentication.
 
 <!-- USAGE EXAMPLES -->
 
@@ -56,7 +72,7 @@ the cloud. Suddenrun creates a playlist "Running workout" in your Spotify accoun
 Specific tracks could be added or removed and this information would be preserved and used during the update or creation
 of a new playlist.
 
-[![suddenrun_demo](https://img.youtube.com/vi/e8jQKUZj4rw/3.jpg)](https://youtu.be/e8jQKUZj4rw "Suddenrun demo")
+[![suddenrun_demo](https://img.youtube.com/vi/e8jQKUZj4rw/2.jpg)](https://www.youtube.com/watch?v=e8jQKUZj4rw "Suddenrun demo")
 
 # Built With
 
