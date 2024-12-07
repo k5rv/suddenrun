@@ -1,0 +1,71 @@
+server:
+  port: 8082
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+
+spring:
+  application:
+    name: suddenrun
+  test:
+    database:
+      replace: none
+  datasource:
+    url: jdbc:h2:mem:suddenrun;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        show-sql: true
+  cloud:
+    openfeign:
+      client:
+        config:
+          spotify:
+            url: http://127.0.0.1:${wiremock.server.port}/v1
+            logger-level: basic
+
+spotify:
+  service:
+    playlist:
+      details:
+        name: "Running Workout"
+        description: "Music for your training based on Spotify recommendations"
+        public: TRUE
+        size: 50
+    music-features:
+      min-tempo: "120"
+      max-tempo: "140"
+      min-energy: "0.4"
+      max-energy: ""
+      min-valence: "0.5"
+      max-valence: ""
+      min-danceability: "0.5"
+      max-danceability: ""
+      min-popularity: ""
+  client:
+    requests:
+      get-user-top-tracks:
+        limit: 4
+        offset: 0
+        time-range: LONG_TERM
+      get-recommendations:
+        limit: 15
+      update-playlist-items-request:
+        position: 0
+
+logging:
+  level:
+    com.ksaraev.suddenrun.app: INFO
+    com.ksaraev.suddenrun.spotify.SpotifyClient: INFO
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+    org.hibernate: INFO

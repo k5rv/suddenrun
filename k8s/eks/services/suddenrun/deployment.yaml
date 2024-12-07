@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: suddenrun
+  labels:
+    app: suddenrun
+spec:
+  template:
+    metadata:
+      name: suddenrun
+      labels:
+        app: suddenrun
+    spec:
+      containers:
+        - name: suddenrun
+          image: k5rv/suddenrun:latest
+          imagePullPolicy: Always
+          ports:
+            - name: tcp
+              containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: eks
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: suddenrun

@@ -32,4 +32,16 @@ build/
 ### VS Code ###
 .vscode/
 
+### AWS Scripts Output ###
+/aws/cluster.yaml
+/aws/route53-create-record.json
+/aws/route53-delete-record.json
+
+### Personal ###
 /features.txt
+
+### Unidentified ###
+/.jpb/
+/.jpb/jpb-settings.xml
+.DS_Store
+
